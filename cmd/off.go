@@ -19,7 +19,7 @@ func init() {
 // process the toggle command
 var offCmd = &cobra.Command{
 	Use:   "off",
-	Short: "turn off a device kasa device",
+	Short: "turn off a device",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// Get the devices from Kasa

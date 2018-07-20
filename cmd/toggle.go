@@ -18,7 +18,7 @@ func init() {
 // process the toggle command
 var toggleCmd = &cobra.Command{
 	Use:   "toggle",
-	Short: "toggle device in kasa",
+	Short: "toggle device state",
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// Get the devices from Kasa
