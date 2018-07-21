@@ -5,13 +5,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	deviceAliasOff string
-)
-
 func init() {
 	rootCmd.AddCommand(offCmd)
-	offCmd.Flags().StringVarP(&deviceAliasOff, "device", "d", "text", `alias of device to turn off`)
 	offCmd.MarkFlagRequired("device")
 
 }
@@ -23,7 +18,7 @@ var offCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// Get the devices from Kasa
-		device := smartplug.GetDeviceByAlias(deviceAliasOff)
+		device := smartplug.GetDeviceByAlias(deviceAlias)
 		device.Off()
 
 	},

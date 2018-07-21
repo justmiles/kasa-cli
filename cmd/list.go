@@ -10,13 +10,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	outputType string
-)
-
 func init() {
 	rootCmd.AddCommand(listCmd)
-	listCmd.Flags().StringVarP(&outputType, "output", "o", "text", `output type "text" or "json"`)
 }
 
 // process the list command

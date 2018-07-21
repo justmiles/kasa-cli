@@ -11,7 +11,7 @@ var (
 
 func init() {
 	rootCmd.AddCommand(onCmd)
-	onCmd.Flags().StringVarP(&deviceAliasOn, "device", "d", "text", `alias of device to turn on`)
+	onCmd.Flags().StringVarP(&deviceAliasOn, "device", "d", "", `alias of device to turn on`)
 	onCmd.MarkFlagRequired("device")
 
 }

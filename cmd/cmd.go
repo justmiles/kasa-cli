@@ -9,15 +9,17 @@ import (
 )
 
 var (
-	username = os.Getenv("KASA_USERNAME")
-	password = os.Getenv("KASA_PASSWORD")
+	username    = os.Getenv("KASA_USERNAME")
+	password    = os.Getenv("KASA_PASSWORD")
+	outputType  string
+	deviceAlias string
 )
 
 var rootCmd = &cobra.Command{
 	Use:     "kasa",
 	Short:   "Interact with the Kasa's smart devices",
 	Long:    `An unoffical tool to communicate with the remote Kasa API and control your smart devices`,
-	Version: "1.0.0",
+	Version: "1.1.0",
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
 	},
@@ -32,8 +34,10 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.PersistentFlags().StringVarP(&username, "username", "u", "", "your Kasa username (defaults to KASA_USERNAME environment variable)")
-	rootCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "your Kasa password (defaults to KASA_PASSWORD environment variable)")
+	rootCmd.PersistentFlags().StringVarP(&username, "username", "u", "", `your Kasa username (default "KASA_USERNAME" environment variable)`)
+	rootCmd.PersistentFlags().StringVarP(&password, "password", "p", "", `your Kasa password (default "KASA_PASSWORD" environment variable)`)
+	rootCmd.Flags().StringVarP(&outputType, "output", "o", "text", `output type "text" or "json"`)
+	rootCmd.Flags().StringVarP(&deviceAlias, "device", "d", "", `alias of device to interact with`)
 	cobra.OnInitialize(loginToKasa)
 }
 

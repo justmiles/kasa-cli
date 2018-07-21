@@ -5,13 +5,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	deviceAlias string
-)
-
 func init() {
 	rootCmd.AddCommand(toggleCmd)
-	toggleCmd.Flags().StringVarP(&deviceAlias, "device", "d", "text", `alias of device to toggle`)
 	toggleCmd.MarkFlagRequired("device")
 }
 
