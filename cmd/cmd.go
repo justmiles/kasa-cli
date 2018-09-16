@@ -19,7 +19,7 @@ var rootCmd = &cobra.Command{
 	Use:     "kasa",
 	Short:   "Interact with the Kasa's smart devices",
 	Long:    `An unoffical tool to communicate with the remote Kasa API and control your smart devices`,
-	Version: "1.1.0",
+	Version: "1.2.0",
 	Run: func(cmd *cobra.Command, args []string) {
 		cmd.Help()
 	},
