@@ -10,13 +10,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var (
-	deviceAliasStatus string
-)
-
 func init() {
 	rootCmd.AddCommand(statusCmd)
-	// statusCmd.MarkFlagRequired("device")
 }
 
 // process the toggle command
@@ -25,8 +20,10 @@ var statusCmd = &cobra.Command{
 	Short: "get device status",
 	Run: func(cmd *cobra.Command, args []string) {
 
+		validateString(deviceAlias, "please pass a device (--device)")
+
 		// Get the devices from Kasa
-		device := smartplug.GetDeviceByAlias(deviceAliasStatus)
+		device := smartplug.GetDeviceByAlias(deviceAlias)
 		info := device.GetSystemInfo()
 
 		if outputType == "json" {

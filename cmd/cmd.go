@@ -36,8 +36,8 @@ func Execute() {
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&username, "username", "u", "", `your Kasa username (default "KASA_USERNAME" environment variable)`)
 	rootCmd.PersistentFlags().StringVarP(&password, "password", "p", "", `your Kasa password (default "KASA_PASSWORD" environment variable)`)
-	rootCmd.Flags().StringVarP(&outputType, "output", "o", "text", `output type "text" or "json"`)
-	rootCmd.Flags().StringVarP(&deviceAlias, "device", "d", "", `alias of device to interact with`)
+	rootCmd.PersistentFlags().StringVarP(&outputType, "output", "o", "text", `output type "text" or "json"`)
+	rootCmd.PersistentFlags().StringVarP(&deviceAlias, "device", "d", "", `alias of device to interact with`)
 	cobra.OnInitialize(loginToKasa)
 }
 
@@ -60,4 +60,11 @@ func loginToKasa() {
 	}
 
 	smartplug.Login(username, password)
+}
+
+func validateString(s, message string) {
+	if s == "" {
+		fmt.Println(message)
+		os.Exit(1)
+	}
 }
